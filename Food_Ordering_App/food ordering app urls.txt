@@ -1,0 +1,231 @@
+Food Ordering App:
+
+Note:
+     1. Superuser in created:
+	email:admin1@gmail.com
+	password:admin1admin1
+
+     2. os environment variables email and password (MAIL1,PASS1) need to be set.
+
+Groups created:
+There are 4 typed of users:
+1.customers 2.sellers(hotel managers) 3.admins 4.employee(delivery person)
+
+
+Urls:
+
+User to register account
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"seller1",
+"email":"seller1@gmail.com",
+"mobile_no":1,
+"password":"seller1",
+"user_type":"sellers"
+}
+============================================
+
+
+Used to get jwt tokens
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"email",
+"password":"password"
+}
+
+========================================================
+Used to set delivery location
+POST:
+http://127.0.0.1:8000/account/api/delivery_location/
+{
+"latitude":1.0,
+"longitude":1.0,
+"area":"area1",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+==========================================================
+
+Used to get past delivery locations
+GET:
+http://127.0.0.1:8000/account/api/delivery_location_list/
+===========================================================
+
+Used to update delivery location from past delivery locations
+PUT:
+http://127.0.0.1:8000/account/api/delivery_location/update/<location_id>/
+==========================================================================
+
+Used to get the user profile
+GET:
+http://127.0.0.1:8000/account/api/profile/
+================================================
+
+Used to set the delivery location based on the ip address
+POST:
+http://127.0.0.1:8000/account/api/locationIp/<ip-adress>/
+==========================================================
+
+Used to update the delivery person location
+PUT:
+http://127.0.0.1:8000/employer/api/location/
+{
+"latitude":1.0,
+"longitude":1.0,
+}
+=========================================================
+
+Used to update employer details
+PUT:
+http://127.0.0.1:8000/employer/api/update/<employer_id>/
+{
+"available":"True",
+"area":"area1",
+"city":"city1",
+"state":"state1",
+"country":"country1"
+}
+===========================================================
+
+Used to get the orders of the delivery person
+GET:
+http://127.0.0.1:8000/employer/api/orders/
+===========================================================
+
+Used to register the hotel
+POST:
+http://127.0.0.1:8000/hotel/api/register/
+{
+"name":"hotel1",
+"latitude":1.5,
+"longitude":1.5,
+"street":"street1",
+"area":"area1",
+"city":"city1",
+"state":"state1",
+"country":"country1"
+}
+========================================================
+
+Used to get all hotels
+GET:
+http://127.0.0.1:8000/hotel/api/hotels/
+==========================================================
+
+Used to get hotels registered by sellers
+GET:
+http://127.0.0.1:8000/hotel/api/myhotels/
+===========================================================
+
+Used to get the hotels near to the delivery location
+GET:
+http://127.0.0.1:8000/hotel/api/hotels_near_me/
+===========================================================
+
+Used to get the hotel details
+GET:
+http://127.0.0.1:8000/hotel/api/hotel/<hotel_id>/
+===========================================================
+
+Used to update the hotels
+PUT:
+http://127.0.0.1:8000/hotel/api/hotel/update/<hotel_id>/
+{
+"name":"hotel1",
+"latitude":11.650375,
+"longitude":78.162670,
+"street":"street1",
+"area":"area1",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+=============================================================
+
+Used to delete the hotel
+DELETE:
+http://127.0.0.1:8000/hotel/api/hotel/delete/<hotel_id>/
+==============================================================
+
+Used to register food to the hotel
+POST:
+http://127.0.0.1:8000/hotel/api/food/register/
+{
+"name":"food1",
+"cost":50,
+"available":"True",
+"offer":2,
+"major_category":"one",
+"minor_category":"two",
+"hotel":"<hotel_id>"
+}
+=================================================================
+
+Used to get the food details
+GET:
+http://127.0.0.1:8000/hotel/api/food/<food_id>/
+=================================================================
+
+Used to update the food details
+PUT:
+http://127.0.0.1:8000/hotel/api/food/update/<food_id>/
+{
+"name":"food1",
+"cost":50,
+"available":"True",
+"offer":2,
+"major_category":"one",
+"minor_category":"two",
+"hotel":"<hotel_id>"
+}
+===============================================================
+
+Used to delete the food
+DELETE:
+http://127.0.0.1:8000/hotel/api/food/delete/<food_id>/
+===============================================================
+
+Used to get all foods in the hotel
+GET:
+http://127.0.0.1:8000/hotel/api/hotel/food/<hotel_id>/
+==============================================================
+
+Used to place the order
+POST:
+http://127.0.0.1:8000/order/api/order/
+[
+{
+"food_id":1,
+"quantity":2
+},
+{
+"food_id":2,
+"quantity":3
+}
+]
+========================================================
+
+Used to get the order details
+GET:
+http://127.0.0.1:8000/order/api/order/1/
+==========================================================
+
+Used to update the order status
+PUT:
+http://127.0.0.1:8000/order/api/order_status/update/<order_id>/
+{
+    "on_the_way":"True",
+    "delivered":"False"
+}
+===============================================================
+
+Used to update the ratings of the order
+PUT:
+http://127.0.0.1:8000/order/api/order_rating/update/<order_id>/
+{
+    "rating":5
+}
+================================================================

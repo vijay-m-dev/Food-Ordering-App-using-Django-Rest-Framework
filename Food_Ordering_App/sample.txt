@@ -1,0 +1,415 @@
+Sample project workflow:
+
+Account registration of admin
+=========================================================
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"admin2",
+"email":"admin2@gmail.com",
+"mobile_no":"+1111111112",
+"password":"admin2admin2",
+"user_type":"admins"
+}
+=========================================================
+
+
+
+Account registration of customer
+=========================================================
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"customer1",
+"email":"customer1@gmail.com",
+"mobile_no":"+2222222222",
+"password":"customer1customer1",
+"user_type":"customers"
+}
+
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"customer2",
+"email":"customer2@gmail.com",
+"mobile_no":"+2222222223",
+"password":"customer2customer2",
+"user_type":"customers"
+}
+=========================================================
+
+
+Account registration of sellers(hotel owners)
+=========================================================
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"seller1",
+"email":"seller1@gmail.com",
+"mobile_no":"+3333333333",
+"password":"seller1seller1",
+"user_type":"sellers"
+}
+
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"seller2",
+"email":"seller2@gmail.com",
+"mobile_no":"+3333333334",
+"password":"seller2seller2",
+"user_type":"sellers"
+}
+======================================================
+
+
+
+Account registration of delivery persons
+======================================================
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"deliver1",
+"email":"deliver1@gmail.com",
+"mobile_no":"+4444444444",
+"password":"deliver1deliver1",
+"user_type":"employee"
+}
+
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"deliver2",
+"email":"deliver2@gmail.com",
+"mobile_no":"+4444444445",
+"password":"deliver2deliver2",
+"user_type":"employee"
+}
+
+POST:
+http://127.0.0.1:8000/account/api/register/
+{
+"username":"deliver3",
+"email":"deliver3@gmail.com",
+"mobile_no":"+4444444446",
+"password":"deliver3deliver3",
+"user_type":"employee"
+}
+==========================================================
+
+
+
+Admin Signing in and allocating delivery persons places
+==========================================================
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"admin2@gmail.com",
+"password":"admin2admin2"
+}
+
+PUT:
+http://127.0.0.1:8000/employer/api/update/1/
+{
+"available":"True",
+"area":"area1",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+
+PUT:
+http://127.0.0.1:8000/employer/api/update/2/
+{
+"available":"True",
+"area":"area2",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+
+PUT:
+http://127.0.0.1:8000/employer/api/update/3/
+{
+"available":"True",
+"area":"area2",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+==============================================================
+
+
+
+Each delivery person signing in and updating their location
+=============================================================
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"deliver1@gmail.com",
+"password":"deliver1deliver1"
+}
+
+PUT:
+http://127.0.0.1:8000/employer/api/location/
+{
+"latitude":11.649515,
+"longitude":78.164116
+}
+
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"deliver2@gmail.com",
+"password":"deliver2deliver2"
+}
+
+PUT:
+http://127.0.0.1:8000/employer/api/location/
+{
+"latitude":11.644731,
+"longitude":78.174041
+}
+
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"deliver3@gmail.com",
+"password":"deliver3deliver3"
+}
+
+PUT:
+http://127.0.0.1:8000/employer/api/location/
+{
+"latitude":11.638789,
+"longitude":78.172561
+}
+=============================================================
+
+
+Sellers Signing in and creating hotels and food for their hotels
+================================================================
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"seller1@gmail.com",
+"password":"seller1seller1"
+}
+
+POST:
+http://127.0.0.1:8000/hotel/api/register/
+{
+"name":"hotel1",
+"latitude":11.650375,
+"longitude":78.162670,
+"street":"street1",
+"area":"area1",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+
+POST:
+http://127.0.0.1:8000/hotel/api/register/
+{
+"name":"hotel2",
+"latitude":11.652827,
+"longitude":78.164388,
+"street":"street2",
+"area":"area2",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+
+POST:
+http://127.0.0.1:8000/hotel/api/food/register/
+{
+"name":"Rice",
+"cost":50,
+"available":"True",
+"offer":2,
+"major_category":"Veg",
+"minor_category":"Meals",
+"hotel":"1"
+}
+
+POST:
+http://127.0.0.1:8000/hotel/api/food/register/
+{
+"name":"Chicken Biriyani",
+"cost":70,
+"available":"True",
+"offer":3,
+"major_category":"Non Veg",
+"minor_category":"Biriyani",
+"hotel":"1"
+}
+
+
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"seller2@gmail.com",
+"password":"seller2seller2"
+}
+
+POST:
+http://127.0.0.1:8000/hotel/api/food/register/
+{
+"name":"hotel3",
+"latitude":11.658056,
+"longitude":78.159889,
+"street":"street2",
+"area":"area3",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+
+POST:
+http://127.0.0.1:8000/hotel/api/food/register/
+{
+"name":"hotel3",
+"latitude":11.823412,
+"longitude":78.321345,
+"street":"street3",
+"area":"area4",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+=================================================================
+
+
+Customers Signing in and setting delivery location and viewing the hotels nearby and food in the hotel
+======================================================================================================
+POST:
+http://127.0.0.1:8000/account/api/token/
+{
+"email":"customer1@gmail.com",
+"password":"customer1customer1"
+}
+
+POST:
+http://127.0.0.1:8000/account/api/delivery_location/
+{
+"latitude":11.649348,
+"longitude":78.169699,
+"area":"area1",
+"city":"salem",
+"state":"tamilnadu",
+"country":"india"
+}
+
+GET:
+http://127.0.0.1:8000/hotel/api/hotels_near_me/
+
+GET:
+http://127.0.0.1:8000/hotel/api/hotel/food/1/
+===================================================================================
+
+
+Customer Ordering
+================================================================================
+POST:
+http://127.0.0.1:8000/order/api/order/
+[
+    {
+        "food_id":1,
+        "quantity":2
+    },
+    {
+        "food_id":2,
+        "quantity":3
+    }
+]
+
+OUTPUT OF ORDER DETAILS:
+{
+    "message": "Order is successfully made",
+    "order_details": {
+        "order": {
+            "id": 1,
+            "total_cost": "302.00",
+            "order_date_time": "2021-03-26T17:46:47.074791Z",
+            "delivery_date_time": "2021-03-26T18:04:47.074791Z"
+        },
+        "user": {
+            "id": 1,
+            "user_id": 3,
+            "name": "customer1",
+            "email": "customer1@gmail.com",
+            "mobile_no": "+2222222222"
+        },
+        "hotel": {
+            "id": 1,
+            "name": "hotel1",
+            "latitude": "11.6503750000000000",
+            "longitude": "78.1626700000000000",
+            "street": "street1",
+            "area": "area1",
+            "city": "salem",
+            "state": "tamilnadu",
+            "country": "india"
+        },
+        "food": [
+            {
+                "id": 1,
+                "name": "Rice",
+                "cost": "50.00",
+                "offer": 2,
+                "quantity": 2,
+                "total_cost": 98,
+                "major_category": "Veg",
+                "minor_category": "Meals"
+            },
+            {
+                "id": 2,
+                "name": "Chicken Biriyani",
+                "cost": "70.00",
+                "offer": 3,
+                "quantity": 3,
+                "total_cost": 204,
+                "major_category": "Non Veg",
+                "minor_category": "Biriyani"
+            }
+        ],
+        "delivery_person": {
+            "id": 1,
+            "employer_id": 7,
+            "name": "deliver1",
+            "email": "deliver1@gmail.com",
+            "mobile_no": "+4444444444"
+        },
+        "status": {
+            "id": 1,
+            "order_taken": true,
+            "on_the_way": false,
+            "delivered": false
+        }
+    }
+}
+
+===========================================================================
+
+
+Delivery person updating the status of delivery
+===========================================================================
+PUT:
+http://127.0.0.1:8000/order/api/order_status/update/1/
+{
+    "on_the_way":"True",
+    "delivered":"True"
+}
+
+============================================================================
+
+
+Customer giving ratings to the order
+==========================================================================
+PUT:
+http://127.0.0.1:8000/order/api/order_rating/update/1/
+{
+    "rating":5
+}
